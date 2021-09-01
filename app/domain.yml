@@ -5,29 +5,36 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
+  - gratitude
+  - describe_symptoms
 
-responses:
+entities:
+  - Symptom
+
+slots:
+  Symptom:
+    type: list
+
+actions:
+  - utter_greet
+  - utter_goodbye
+  - utter_iamabot
+  - utter_no_problem
+  - action_diagnose_symptoms
+
+templates:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+  - text: "Hello, I am a symptom diagnosis bot. What are your symptoms?"
 
   utter_goodbye:
   - text: "Bye"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_no_problem:
+  - text: "No problem!"
 
 session_config:
   session_expiration_time: 60

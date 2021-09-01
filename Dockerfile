@@ -1,12 +1,24 @@
+# from rasa base image
 FROM rasa/rasa:latest
+# copy all source and the Rasa generated model
+COPY . /app
 
-COPY app /app
-COPY server.sh /app/server.sh
+# inform which port will run on
+EXPOSE 5005
+
+# script to run rasa core
+COPY startup.sh /app/scripts/startup.sh
+# script to run rasa shell
+COPY shell.sh /app/scripts/shell.sh
 
 USER root
-RUN chmod -R 777 /app
-USER 1001
+RUN chmod a+x /app/scripts/startup.sh
+RUN chmod a+x /app/scripts/shell.sh
 
-RUN rasa train nlu
+WORKDIR /app
 
-ENTRYPOINT ["/app/server.sh"]
+ENTRYPOINT []
+ENV shell_mode false
+
+# launch script (rasa shell or rasa run)
+CMD sh -c 'if [ "$shell_mode" = false ]; then /app/scripts/startup.sh; else  /app/scripts/shell.sh; fi'
