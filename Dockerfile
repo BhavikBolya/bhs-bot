@@ -6,6 +6,8 @@ COPY app /app
 # inform which port will run on
 EXPOSE 5005
 
+# script to trai rasa model
+COPY startup.sh /app/train.sh
 # script to run rasa core
 COPY startup.sh /app/startup.sh
 # script to run rasa shell
