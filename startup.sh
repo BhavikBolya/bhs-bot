@@ -1,2 +1,2 @@
 echo PORT $PORT
-rasa run -p $PORT --cors "*" --debug --endpoints heroku-endpoints.yml
+rasa run -p $PORT --cors "*" --debug --remote-storage 20210509-235844.tar.gz
