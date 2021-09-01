@@ -1,1 +1,1 @@
-rasa train nlu
+rasa train
