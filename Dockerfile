@@ -14,7 +14,7 @@ COPY startup.sh /app/startup.sh
 COPY shell.sh /app/shell.sh
 
 USER root
-# RUN chmod a+x /app/train.sh
+RUN chmod a+x /app/train.sh
 RUN chmod a+x /app/startup.sh
 RUN chmod a+x /app/shell.sh
 
